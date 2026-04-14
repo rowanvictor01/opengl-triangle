@@ -10,13 +10,14 @@ add_requires("libsdl2", "glad", {
 
 set_toolchains("gcc-15")
 set_languages("cxx23")
-add_cxxflags("-pedantic-errors", "-Wall", "-Weffc++", "-Wextra", "-Wconversion", "-Wsign-conversion", "-Werror", "-g")
+add_cxxflags("-pedantic-errors", "-Wall", "-Wextra", "-Wconversion", "-Wsign-conversion", "-Werror", "-g")
 
 
 target("opengl-triangle")
     set_kind("binary")
     add_files("src/*.cpp")
     add_packages("libsdl2", "glad")
+    add_includedirs("include/")
 
 
 --
