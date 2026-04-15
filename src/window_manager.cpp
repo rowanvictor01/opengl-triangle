@@ -54,6 +54,10 @@ WindowManager::~WindowManager()
 }
 
 
+/*
+ * Handles setting of the is_running flag when user presses the 'x'
+ * button to close the window
+*/
 void WindowManager::poll_window_quit_event()
 {
   while(SDL_PollEvent(&this->event) != 0)
