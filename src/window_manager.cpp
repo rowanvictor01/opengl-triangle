@@ -42,7 +42,7 @@ WindowManager::WindowManager(std::string title, int width, int height)
   
   this->window_width = width;
   this->window_height = height;
-  this->quit = false;
+  this->is_running = true;
 }
 
 
@@ -54,13 +54,33 @@ WindowManager::~WindowManager()
 }
 
 
+void WindowManager::poll_window_quit_event()
+{
+  while(SDL_PollEvent(&this->event) != 0)
+  {
+    if(this->event.type == SDL_QUIT)
+    {
+      std::cout << "[LOG]: Exiting Program..." << std::endl;
+      this->is_running = false;
+      break;
+    }
+  }
+}
+
+
+bool WindowManager::get_is_running() const
+{
+  return this->is_running;
+}
+
+
 /*
-WindowManager::get_window_width()
+WindowManager::get_window_width() const
 {}
 */
 
 
 /*
-WindowManager::get_window_height()
+WindowManager::get_window_height() const
 {}
 */
