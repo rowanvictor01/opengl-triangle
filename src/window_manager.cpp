@@ -15,7 +15,8 @@ WindowManager::WindowManager(std::string title, int width, int height)
   // Set SDL OpenGL context attributes
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 6);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+		      SDL_GL_CONTEXT_PROFILE_CORE);
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
   SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
 
@@ -45,10 +46,12 @@ WindowManager::WindowManager(std::string title, int width, int height)
 }
 
 
-/*
 WindowManager::~WindowManager()
-{}
-*/
+{
+  std::cout << "[LOG]: Cleaning up resources..." << std::endl;
+  SDL_DestroyWindow(this->window);
+  SDL_Quit();
+}
 
 
 /*
