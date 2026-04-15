@@ -11,6 +11,6 @@ class GraphicsManager
     GraphicsManager();
     ~GraphicsManager();
   
-    bool initialize();
+    void initialize();
     void render();
 };

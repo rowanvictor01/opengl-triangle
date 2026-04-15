@@ -14,7 +14,7 @@ GraphicsManager::GraphicsManager(){}
 GraphicsManager::~GraphicsManager(){}
 
 
-bool GraphicsManager::initialize()
+void GraphicsManager::initialize()
 {
   /*
    * Load Glad
@@ -43,13 +43,6 @@ bool GraphicsManager::initialize()
     0.f, 1.f, 0.f,  // vertex 2
     0.f, 0.f, 1.f   // vertex 3
   };
-  
-  
-  /*
-   * Returns a bool value to signify
-   * if initialization was successfull
-   */
-  return true;
 }
 
 
