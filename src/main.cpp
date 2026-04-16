@@ -1,9 +1,13 @@
 #include <window_manager.hpp>
+#include <graphics_manager.hpp>
 
 
 int main(void)
 {
   WindowManager wm("OpenGL Triangle", 800, 600);
+  GraphicsManager gm;
+  gm.initialize();
+  gm.create_graphics_pipeline();
   
   /*
    *  Main Loop

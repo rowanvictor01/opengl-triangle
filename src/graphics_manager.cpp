@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <fstream>
 
 #include <glad/glad.h>
 #include <SDL2/SDL.h>
@@ -108,6 +110,59 @@ void GraphicsManager::initialize()
   glDisableVertexAttribArray(0);
   glDisableVertexAttribArray(1);
 }
+
+
+
+
+void GraphicsManager::create_graphics_pipeline()
+{
+  std::string vertex_shader_src = load_shader_file("/home/rowan-victor/Projects/cpp/opengl-triangle/shaders/vertex.glsl");
+  std::string fragment_shader_src = load_shader_file("/home/rowan-victor/Projects/cpp/opengl-triangle/shaders/fragment.glsl");
+  
+  //this->compiled_shader_program;
+}
+
+
+
+std::string GraphicsManager::load_shader_file(const std::string& filepath)
+{
+  std::ifstream file(filepath);
+  
+  if(!file.is_open())
+  {
+    std::cerr << "\n[WARNING]: Failed to load file - " << filepath << std::endl;
+    return "";
+  }
+    
+
+  // Store shader src code loaded from file as string
+  std::string shader_src = "";
+  
+  std::string line;
+  while(std::getline(file, line))
+  {
+    // Make sure to add newline char at end of every line
+    shader_src += line + '\n';
+  }
+  
+  std::cout << "[LOG]: File " << filepath << " successfully loaded" << std::endl;
+  
+  file.close();
+  return shader_src;
+}
+
+
+/*
+GLuint GraphicsManager::build_shader_program(const std::string& vertex_shader_src, const std::string& fragment_shader_src)
+{
+   *
+   *  This function will compile and link the glsl shader programs
+   *  during runtime and return the built shader program
+   *
+}
+*/
+
+
 
 
 void GraphicsManager::pre_draw(){}
